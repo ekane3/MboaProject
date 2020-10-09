@@ -15,7 +15,7 @@ $dateN = $_POST['dateN'];
 
 try{
     include "connexion.php";
-    $req=$bdd->prepare('insert into utilisateur(login,nom,password,statut,classe,date_naissance,date_inscription) values(:login,:nom,:pass,:statut,:classe,:dateNn,'.NOW().')');
+    $req=$bdd->prepare('insert into utilisateur(login,nom,password,statut,classe,date_naissance) values(:login,:nom,:pass,:statut,:classe,:dateN)');
 	$req->bindParam(':login',$login);
 	$req->bindParam(':nom',$nom);
 	$req->bindParam(':pass',$pass);

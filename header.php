@@ -110,7 +110,7 @@
             <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Mon Profil</span></a>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          	<a class="dropdown-item" href="#">Mon compte</a>
+          	<a class="dropdown-item" href="profil.php">Mon compte</a>
             <a class="dropdown-item" href="deconnexion.php">Deconnexion</a>
           </div>
         </li>

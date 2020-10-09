@@ -63,8 +63,8 @@
             <div class="col-md-4 ">
 
               <div class="md-form">
-                <input type="text" id="form1" class="form-control" name="nom">
-                <label for="form1" class="">Entrez son nom</label>
+                <input type="text" id="form3" class="form-control" name="nom">
+                <label for="form3" class="">Entrez son nom</label>
               </div>
 
             </div>
@@ -74,8 +74,8 @@
             <div class="col-md-4 ">
 
               <div class="md-form">
-                <input type="text" id="form1" class="form-control" name="pass">
-                <label for="form1" class="">Entrer son mot de passe</label>
+                <input type="text" id="form2" class="form-control" name="pass">
+                <label for="form2" class="">Entrer son mot de passe</label>
               </div>
 
             </div>
