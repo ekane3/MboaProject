@@ -111,20 +111,20 @@
             <div class="row text-center">
               <div class="col-md-4">
                 <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
-                <p>San Francisco, CA 94126</p>
-                <p>United States</p>
+                <p>Limoges, 84100</p>
+                <p>France</p>
               </div>
 
               <div class="col-md-4">
                 <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
-                <p>+ 01 234 567 89</p>
-                <p>Mon - Fri, 8:00-22:00</p>
+                <p>+ 33 758 047 525 </p>
+                <p>Lun - Ven, 8:00-18:00</p>
               </div>
 
               <div class="col-md-4">
                 <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i></a>
-                <p>info@gmail.com</p>
-                <p>sale@gmail.com</p>
+                <p>info@3il.fr</p>
+                <p>scolarité@3il.fr</p>
               </div>
             </div>
 

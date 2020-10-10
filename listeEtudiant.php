@@ -39,7 +39,6 @@
 
       <!-- Section: Basic examples -->
       <section>
-<button></button>
         <!-- Gird column -->
         <div class="col-md-12">
 

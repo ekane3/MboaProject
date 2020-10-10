@@ -48,11 +48,14 @@
             <li><a href="listeEtudiant.php" class="collapsible-header waves-effect"><i class="fas fa-eye"></i>
                 Consulter la liste des étudiants</a>
             </li>
-            <li><a href="../alerts/alerts.html" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
+            <li><a href="gesalles.php" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
                 Gestion des salles</a>
             </li>
-            <li><a href="../alerts/alerts.html" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
+            <li><a href="#" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
                 Gestion des créneaux</a>
+            </li>
+             <li><a href="edt.php" class="collapsible-header waves-effect"><i class=" fas fa-table"></i>
+                Emploi de temps</a>
             </li>
           </ul>
         </li>
@@ -92,7 +95,7 @@
               <i class="fas fa-money mr-2" aria-hidden="true"></i>
               <span>Visualiser mes réservation</span>
             </a>
-            <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="#">
               <i class="fas fa-money mr-2" aria-hidden="true"></i>
               <span>Annuler une réservation</span>
             </a>
@@ -102,7 +105,7 @@
           <a class="nav-link waves-effect" href="contact.php"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-effect"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Aide</span></a>
+          <a class="nav-link waves-effect" href="aide.php"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Aide</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown"
