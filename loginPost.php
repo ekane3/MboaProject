@@ -1,5 +1,6 @@
 <?php
   session_start(); 
+  setcookie('idCookie','user',time()*365*24*3600,null,null,false,true); 
   try{
   //Connexion a la base de données
     $login=$_POST['login'];

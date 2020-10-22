@@ -48,11 +48,8 @@
             <li><a href="listeEtudiant.php" class="collapsible-header waves-effect"><i class="fas fa-eye"></i>
                 Consulter la liste des étudiants</a>
             </li>
-            <li><a href="gesalles.php" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
+            <li><a href="gesalles.php" class="collapsible-header waves-effect"><i class=" fas fa-chalkboard-teacher"></i>
                 Gestion des salles</a>
-            </li>
-            <li><a href="#" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
-                Gestion des créneaux</a>
             </li>
              <li><a href="edt.php" class="collapsible-header waves-effect"><i class=" fas fa-table"></i>
                 Emploi de temps</a>
@@ -87,15 +84,15 @@
             <span class="d-none d-md-inline-block">Réservations</span>
           </a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="edt.php">
               <i class="fas fa-money mr-2" aria-hidden="true"></i>
               <span>Faire une réservation</span>
             </a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="listReservation.php">
               <i class="fas fa-money mr-2" aria-hidden="true"></i>
-              <span>Visualiser mes réservation</span>
+              <span>Visualiser mes réservations</span>
             </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="listReservation.php">
               <i class="fas fa-money mr-2" aria-hidden="true"></i>
               <span>Annuler une réservation</span>
             </a>

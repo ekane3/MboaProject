@@ -17,9 +17,7 @@
   <link rel="stylesheet" href="css/mdb.min.css">
 
   <!-- Your custom styles (optional) -->
-  <style>
-
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="fixed-sn white-skin">
@@ -63,7 +61,7 @@
                         <tbody>
                             <tr>
                                 <td class="align-middle">08:30 - 10:00</td>
-                                <td>
+                                <td data-toggle="modal" data-target="#reserve">
                                     <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">ANA NUM TP1</span>
                                     <br><span>107 108</span>
                                     <br><span class="badge badge-pill badge-dark">20 places disponibles</span>
@@ -214,7 +212,34 @@
 
       </section>
       <!-- Section: Basic examples -->
+      <!-- Modal -->
+<div class="modal fade" id="reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Valider une reservation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous vraiment reserver ce créneau ? 
+        <p class="text-muted">
+          Pour reserver cliquer sur "Valider" sinon "Fermer"
+        </p>
+        
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-primary btn-sm btn-rounded">Valider</button>
+        <button type="button" class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal">Fermer</button>
+    
+      </div>
+    </div>
+  </div>
+</div>
 
+<!--/ Modal -->
     </div>
   </main>
   <!-- Main layout -->

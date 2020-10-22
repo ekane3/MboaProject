@@ -116,7 +116,7 @@
             <!-- Grid column -->
             <div class="col-md-4 ">
               <div class="md-form">
-                <button class="btn btn-primary">Inscrire</button>
+                <button type="submit" class="btn btn-primary">Programmer</button>
               </div>
             </div>
             <!-- Grid column -->
