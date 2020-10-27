@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Material Design Bootstrap -->
   <link rel="stylesheet" href="css/mdb.min.css">
-    <!-- DataTables.net  -->
+  <!-- DataTables.net  -->
   <link rel="stylesheet" type="text/css" href="css/addons/datatables.min.css">
   <link rel="stylesheet" href="css/addons/datatables-select.min.css">
 
@@ -26,30 +26,30 @@
 
 <body class="fixed-sn white-skin">
 
-   <!--Main Navigation-->
-  <?php
-    include("header.php");
-    include("connexion.php");
-   ?>
-  <!--Main Navigation-->
+ <!--Main Navigation-->
+ <?php
+ include("header.php");
+ include("connexion.php");
+ ?>
+ <!--Main Navigation-->
 
-  <!-- Main layout -->
-  <main>
-    <div class="container-fluid">
+ <!-- Main layout -->
+ <main>
+  <div class="container-fluid">
 
-      <!-- Section: Inputs -->
-      <section class="section card mb-5">
+    <!-- Section: Inputs -->
+    <section class="section card mb-5">
 
-        <div class="card-body">
+      <div class="card-body">
 
-          <!-- Section heading -->
-          <h1 class="text-center h1">Inscrire un étudiant</h1>
+        <!-- Section heading -->
+        <h1 class="text-center h1">Inscrire un étudiant</h1>
 
-          <h5 class="pb-1">Veuillez remplir les champs</h5>
-          <form method="POST" action="inscriptionEtudiantPost.php">
+        <h5 class="pb-1">Veuillez remplir les champs</h5>
+        <form method="POST" action="inscriptionEtudiantPost.php">
           <!-- Grid row -->
           <div class="row">
-              <!-- Grid column -->
+            <!-- Grid column -->
             <div class="col-md-4 ">
 
               <div class="md-form">
@@ -83,7 +83,7 @@
 
           </div>
           <!-- Grid row -->
-           <!-- Grid row -->
+          <!-- Grid row -->
           <div class="row">
 
             <!-- Grid column -->
@@ -110,7 +110,7 @@
 
           </div>
           <!-- Grid row -->
-           <!-- Grid row -->
+          <!-- Grid row -->
           <div class="row">
             <!-- Grid column -->
             <div class="col-md-4 ">
@@ -121,88 +121,88 @@
             <!-- Grid column -->
           </div>
           <!-- Grid row -->
-          </form>
+        </form>
+      </div>
+    </section>
+    <!-- Section: Inputs -->
+
+    <hr class="my-1">
+
+    <!-- Section: Basic examples -->
+    <section>
+
+      <!-- Gird column -->
+      <div class="col-md-12">
+
+        <h5 class="my-3 dark-grey-text font-weight-bold">Table des étudiants inscrits</h5>
+
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead class="thead-light">
+                <tr class="text">
+                  <th>#</th>
+                  <th>Nom</th>
+                  <th>Login</th>
+                  <th>classe</th>
+                  <th>password</th>
+                  <th>Date de naissance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $requete = $bdd->query(' SELECT * FROM utilisateur WHERE statut ="etudiant" ORDER BY date_inscription DESC LIMIT 10 ');
+                $i=1;
+                
+                while($data = $requete->fetch()){
+                  echo'<tr>'
+                  .'<td>'.$i.'</td>'
+                  .'<td>'.$data['nom'].'</td>'
+                  .'<td>'.$data['login'].'</td>'
+                  .'<td>'.$data['classe'].'</td>'
+                  .'<td>'.$data['password'].'</td>'
+                  .'<td>'.$data['date_naissance'].'</td>'
+                  .'</tr>';
+                  $i++;
+                }    
+                ?>
+              </tr>
+            </tbody>
+          </table>   
         </div>
-      </section>
-      <!-- Section: Inputs -->
-
-      <hr class="my-1">
-
-       <!-- Section: Basic examples -->
-      <section>
-
-        <!-- Gird column -->
-        <div class="col-md-12">
-
-          <h5 class="my-3 dark-grey-text font-weight-bold">Table des étudiants inscrits</h5>
-
-          <div class="card">
-            <div class="card-body">
-              <table class="table table-hover">
-                <thead class="thead-light">
-                  <tr class="text">
-                    <th>#</th>
-                      <th>Nom</th>
-                      <th>Login</th>
-                      <th>classe</th>
-                      <th>password</th>
-                      <th>Date de naissance</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    $requete = $bdd->query(' SELECT * FROM utilisateur WHERE statut ="etudiant" ORDER BY date_inscription DESC LIMIT 10 ');
-                        $i=1;
-                        
-                      while($data = $requete->fetch()){
-                        echo'<tr>'
-                            .'<td>'.$i.'</td>'
-                            .'<td>'.$data['nom'].'</td>'
-                            .'<td>'.$data['login'].'</td>'
-                            .'<td>'.$data['classe'].'</td>'
-                            .'<td>'.$data['password'].'</td>'
-                            .'<td>'.$data['date_naissance'].'</td>'
-                          .'</tr>';
-                          $i++;
-                       }    
-                  ?>
-                  </tr>
-              </tbody>
-            </table>   
-            </div>
-          </div>
-
-        </div>
-        <!-- Gird column -->
-
-      </section>
-      <!-- Section: Basic examples -->
+      </div>
 
     </div>
-  </main>
-  <!-- Main layout -->
-<br>
-  <!-- Footer -->
-  <?php
-  include "footer.php";
-  ?>
-  <!-- Footer -->
+    <!-- Gird column -->
 
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- DataTables  -->
-  <script type="text/javascript" src="js/addons/datatables.min.js"></script>
-  <!-- DataTables Select  -->
-  <script type="text/javascript" src="js/addons/datatables-select.min.js"></script>
-  <!--Custom scripts-->
-  <script>
+  </section>
+  <!-- Section: Basic examples -->
+
+</div>
+</main>
+<!-- Main layout -->
+<br>
+<!-- Footer -->
+<?php
+include "footer.php";
+?>
+<!-- Footer -->
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- DataTables  -->
+<script type="text/javascript" src="js/addons/datatables.min.js"></script>
+<!-- DataTables Select  -->
+<script type="text/javascript" src="js/addons/datatables-select.min.js"></script>
+<!--Custom scripts-->
+<script>
     // SideNav Initialization
     $(".button-collapse").sideNav();
 
@@ -228,7 +228,7 @@
       }
     });
 
-  
+    
   </script>
 </body>
 

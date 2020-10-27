@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,39 +24,39 @@
 
 <body class="fixed-sn white-skin">
 
-   <!--Main Navigation-->
-  <?php
-  include "header.php";
-  ?>
-  <!--Main Navigation-->
+ <!--Main Navigation-->
+ <?php
+ include "header.php";
+ ?>
+ <!--Main Navigation-->
 
-  <!-- Main layout -->
-  <main>
-    <div class="container-fluid">
-     
-    </div>
-  </main>
-  <!-- Main layout -->
+ <!-- Main layout -->
+ <main>
+  <div class="container-fluid">
+   
+  </div>
+</main>
+<!-- Main layout -->
 <br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br>
-  <!-- Footer -->
-  <?php
-  include "footer.php";
-  ?>
-  <!-- Footer -->
+<!-- Footer -->
+<?php
+include "footer.php";
+?>
+<!-- Footer -->
 
 
 
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!--Custom scripts-->
-  <script>
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!--Custom scripts-->
+<script>
     // SideNav Initialization
     $(".button-collapse").sideNav();
 

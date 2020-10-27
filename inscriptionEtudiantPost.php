@@ -14,8 +14,8 @@ $statut="etudiant";
 $dateN = $_POST['dateN'];
 
 try{
-    include "connexion.php";
-    $req=$bdd->prepare('insert into utilisateur(login,nom,password,statut,classe,date_naissance) values(:login,:nom,:pass,:statut,:classe,:dateN)');
+	include "connexion.php";
+	$req=$bdd->prepare('insert into utilisateur(login,nom,password,statut,classe,date_naissance) values(:login,:nom,:pass,:statut,:classe,:dateN)');
 	$req->bindParam(':login',$login);
 	$req->bindParam(':nom',$nom);
 	$req->bindParam(':pass',$pass);
@@ -26,8 +26,8 @@ try{
 	header("Location:inscriptionEtudiant.php");
 }
 catch(Exception $e){
-    echo "non visible";
-    die("Error".$e->getMessage());
+	echo "non visible";
+	die("Error".$e->getMessage());
 }
 
 ?>
