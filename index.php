@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +15,7 @@
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
   <style>
     html,
     body,
@@ -57,10 +58,10 @@
   </style>
 </head>
 
-<body class="register-page">
+<body class="register-page" onload='securi()'>
 
   <!-- Main Navigation -->
-<header>
+  <header>
 
     <!-- Intro Section -->
     <section class="view intro-2">
@@ -87,7 +88,7 @@
                     <div class="col-lg-1">
                     </div>
                     <!-- Grid column -->
-                     <!-- Grid column -->
+                    <!-- Grid column -->
                     <div class="col-lg-10">
                       <!-- Grid row -->
                       <div class="row pb-4 d-flex justify-content-center mb-4">
@@ -100,26 +101,44 @@
                       <!-- /Grid row -->
 
                       <!-- Body -->
-                      <!-- FORMULAIRE DE CONNEXION -->
-                    <form method="POST" action="loginPost.php">
-                      <div class="md-form">
-                        <i class="fas fa-user prefix"></i>
-                        <input type="text" id="orangeForm-name" class="form-control" name="login">
-                        <label for="orangeForm-name">Votre login</label>
-                      </div>
-                      <div class="md-form">
-                        <i class="fas fa-lock prefix"></i>
-                        <input type="password" id="orangeForm-pass" class="form-control" name="pass">
-                        <label for="orangeForm-pass">Vore mot de passe</label>
-                      </div>
 
-                      <div class="text-center">
-                        <button type="submit" class="btn btn-indigo btn-rounded  mT-10 mb-8">Connexion</button>
-                      </div>
-                    </form>
+                      <!-- FORMULAIRE DE CONNEXION -->
+                      <form method="POST" action="loginPost.php">
+                        <div class="md-form">
+                          <i class="fas fa-user prefix"></i>
+                          <input type="text" id="orangeForm-name" class="form-control" name="login">
+                          <label for="orangeForm-name">Votre login</label>
+                        </div>
+                        <div class="md-form">
+                          <i class="fas fa-lock prefix"></i>  
+                          <input type="password" id='secuid10' class="form-control" readonly='true'  name="pass">
+                        </div>
+                        <div class='sgen'>
+                          <table class="table table-bordered" id='secure'>
+                            <tr >
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                            </tr>
+                            <tr>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                              <td class='divimage'>titre</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="text-center">
+                          <button type="reset" class="btn btn-danger btn-indigo btn-rounded btn-sm mT-10 mb-8">Annuler</button>
+                          <button type="submit" class="btn btn-indigo btn-rounded btn-sm mT-10 mb-8">Connexion</button>
+                        </div>
+                      </form>
                     </div>
                     <!-- Grid column -->
-                     <!-- Grid column -->
+                    <!-- Grid column -->
                     <div class="col-lg-1">
                     </div>
                     <!-- Grid column -->
@@ -141,10 +160,50 @@
     </section>
     <!-- Intro Section -->
 
-</header>
+  </header>
   <!-- Main Navigation -->
 
   <!--  SCRIPTS  -->
+  <script>
+
+    tbimage=new Array(1,2,3,4,5,6,7,8,9,0)
+
+    function securi(){
+
+      document.getElementById('secuid10').value=''
+      var allElements = document.getElementById('secure').getElementsByTagName('td'); 
+
+      for (var i = 0; i< allElements.length; i++){
+
+        if(tbimage.length==1){
+          allElements[i].firstChild.nodeValue=tbimage[0]
+        }
+        else{
+          var spl=Math.round(Math.random()*(tbimage.length-1))
+          allElements[i].firstChild.nodeValue=tbimage[spl]
+          tbimage.splice(spl,1)
+        }
+        var dd='secuid'+i+''
+        allElements[i].id=dd
+        allElements[i].onmouseover=function(event){parde(event)};
+        allElements[i].onmouseout=finparde
+      }
+    }
+
+    function inval(lui){
+      var obja=document.getElementById('secuid10')
+      obja.value=obja.value+document.getElementById(lui).firstChild.nodeValue
+    }
+
+    function parde(lui){
+      var di=(navigator.appName.substring(0,3)=="Mic") ? event.srcElement.id : lui.currentTarget.id
+      terin=setTimeout("inval('"+di+"')",500)
+    }
+
+    function finparde(){
+      clearTimeout(terin)
+    }
+  </script>
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <!-- Bootstrap tooltips -->
@@ -158,6 +217,11 @@
   <script>
 
     new WOW().init();
+    $(document).ready(function(){
+      $('#orangeForm-pass').click(function(){
+
+      });
+    });
 
   </script>
   
