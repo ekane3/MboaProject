@@ -26,6 +26,8 @@ session_start();
 
  <!--Main Navigation-->
  <?php
+ 
+ include "connexion.php";
  include "header.php";
  ?>
  <!--Main Navigation-->
@@ -33,7 +35,7 @@ session_start();
  <!-- Main layout -->
  <main>
   <div class="container-fluid">
-   
+
   </div>
 </main>
 <!-- Main layout -->

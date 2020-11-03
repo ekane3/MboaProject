@@ -26,7 +26,7 @@
           <li>
             <a class="collapsible-header waves-effect arrow-r">
               <i class="fas fa-tachometer-alt"></i>
-              
+
               <?php 
               if (isset($_SESSION['login'])){
                 echo "<span>".$_SESSION['nom']."</span>"; 
@@ -80,11 +80,21 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
-      <span class="badge red">3</span><i class="fas fa-ticket-alt" aria-hidden="true"></i>
+      <span class="badge red">
+        <?php 
+        if (isset($_SESSION['login']) && $_SESSION['statut']=="etudiant"){
+           $requete = $bdd->query('SELECT count(*) as nbrereserv FROM reserver WHERE login="'.$_SESSION['login'].'"');
+            $data = $requete->fetch();
+          echo "".$data['nbrereserv'].""; 
+        }else{
+          echo "0"; 
+        } 
+        ?>
+      </span><i class="fas fa-ticket-alt" aria-hidden="true"></i>
       <span class="d-none d-md-inline-block">Réservations</span>
     </a>
     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="edt.php">
+      <a class="dropdown-item" href="faireReservation.php">
         <i class="fas fa-money mr-2" aria-hidden="true"></i>
         <span>Faire une réservation</span>
       </a>

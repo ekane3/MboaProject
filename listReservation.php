@@ -26,8 +26,8 @@ session_start();
 
  <!--Main Navigation-->
  <?php
- include "header.php";
  include "connexion.php";
+ include "header.php";
  ?>
  <!--Main Navigation-->
 
@@ -56,34 +56,63 @@ session_start();
             </thead>
             <tbody>
               <?php
-              $requete = $bdd->query(' SELECT s.nom_salle as salle,c.heure_debut as heured,c.heure_fin as heuref,r.jour_reservation as jour_reserver
-                FROM reserver as r
-                INNER JOIN creneau AS c ON c.id = r.id_creneau
-                INNER JOIN salle AS s ON s.id = r.id_salle
-                INNER JOIN utilisateur AS u ON u.login = r.login
-                WHERE r.login = "'.$_SESSION['login'].'" ORDER BY jour_reserver DESC');
-              $i=1;
-              
+              $requete = $bdd->query(' SELECT c.id as idcreneau,s.id as idsalle,s.nbre_place_total as placetotal,s.nom_salle as nomsalle,c.heure_debut as heure_d,c.heure_fin as heure_f,r.jour_reservation as jour_reserv FROM reserver as r
+                                      INNER JOIN creneau AS c ON c.id = r.id_creneau
+                                      INNER JOIN salle AS s ON s.id = r.id_salle
+                                      WHERE r.login ="'.$_SESSION['login'].'"');
+              $i=1; ?>
+               <tr id="<?=$i?>">
+                <?php
               while($data = $requete->fetch()){
-                echo'<tr>'
-                .'<td>'.$i.'</td>'
-                .'<td>'.$data['salle'].'</td>'
-                .'<td>'.$data['heured'].' - '.$data['heuref'].'</td>'
-                .'<td>'.$data['jour_reserver'].'</td>'
-                .'<td><button class="btn btn-sm btn-rounded btn-outline-danger waves-effect">Annuler reservation</button></td>'
-                .'</tr>';
-                $i++;
-              }    
-              ?>
-            </tr>
-          </tbody>
-        </table>   
-      </div>
+              
+               echo '<td>'.$i.'</td>'
+               .'<td>'.$data['nomsalle'].'</td>'
+               .'<td>'.$data['heure_d'].' - '.$data['heure_f'].'</td>'
+               .'<td>'.$data['jour_reserv'].'</td>';
+                ?>
+                 <td><button class="btn btn-sm btn-rounded btn-outline-danger waves-effect" onClick="annulReservation('<?=$i?>','<?=$data['idcreneau']?>','<?=$data['idsalle']?>','<?=$data['placetotal']?>')">Annuler reservation</button></td>'
+                 
+                 <?php
+                 echo '</tr>';
+               $i++;
+             }    
+             ?>
+           </tr>
+         </tbody>
+       </table>   
+     </div>
+   </div>
+
+ </div>
+ <!-- Gird column -->
+ <!-- Modal -->
+ <div class="modal fade" id="reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Annuler une reservation</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      Voulez-vous vraiment annuler cette réservation ? 
+      <p class="text-muted">
+        Pour annuler cliquer sur "Valider" sinon "Fermer"
+      </p>
 
-  </div>
-  <!-- Gird column -->
+    </div>
+    <div class="modal-footer">
+     <button type="button" class="btn btn-primary btn-sm btn-rounded">Valider</button>
+     <button type="button" class="btn btn-danger btn-sm btn-rounded" data-dismiss="modal">Fermer</button>
 
+   </div>
+ </div>
+</div>
+</div>
+
+<!--/ Modal -->
 </section>
 <!-- Section: Basic examples -->
 </div>
@@ -109,6 +138,29 @@ include "footer.php";
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <!--Custom scripts-->
 <script>
+  //fonction ajax du bouton reserver
+  function annulReservation(ligne,idCreneau,idsalle,placetotal){
+    $.post(
+      "supprimReservPost.php",
+      {ligne:ligne,idcreneau:idCreneau,idsalle:idsalle,placetotal:placetotal},
+      traiterRepSup
+      );
+  }
+       //Traitement de la reponse du traitement de la requete
+    function traiterRepSup(data)
+    {
+      if (data!="----erreur----")
+      {        
+        try{
+          data = JSON.parse(data);
+          $("#"+data.id).remove();
+        } catch (e) {
+          console.error(e)
+          console.error('JSON recieved :', data)
+          console.error(data.id)
+        }
+      }
+    }
     // SideNav Initialization
     $(".button-collapse").sideNav();
 

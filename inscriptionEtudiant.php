@@ -28,8 +28,8 @@ session_start();
 
  <!--Main Navigation-->
  <?php
- include("header.php");
  include("connexion.php");
+ include("header.php");
  ?>
  <!--Main Navigation-->
 

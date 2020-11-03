@@ -26,6 +26,8 @@ session_start();
 
  <!--Main Navigation-->
  <?php
+ 
+ include "connexion.php";
  include "header.php";
  ?>
  <!--Main Navigation-->
