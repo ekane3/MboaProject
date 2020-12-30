@@ -1,5 +1,7 @@
 <?php
-session_start();
+  session_start();
+   include("connexion.php");
+    if ( isset($_SESSION['statut'])&& isset($_SESSION['token']) && isset($_SESSION['token_time']) ) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +40,7 @@ session_start();
       <!-- Gird column -->
       <div class="col-md-12">
 
-        <h1 class="my-4 dark-grey-text "><i class=" fas fa-table"></i>  Travaux Pratiques Semaine : 39</h1>
+        <h1 class="my-4 dark-grey-text "><i class=" fas fa-table"></i>  Travaux Pratiques Semaine : 36/40</h1>
         <div class="card">
           <div class="card-body">
             <div class="container">
@@ -67,7 +69,7 @@ session_start();
                         <br><span class="badge badge-pill badge-dark">20 places disponibles</span>
                       </td>
                       <td>
-                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">ANA NUM TP1</span>
+                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">Modelisation des Systemes TP</span>
                         <br><span>107 108</span>
                         <br><span class="badge badge-pill badge-warning">5 places disponibles</span>
                       </td>
@@ -78,7 +80,7 @@ session_start();
                         <div class="font-size13 text-light-gray"><span class="badge badge-pill badge-dark">50 places disponibles</span></div>
                       </td>
                       <td>
-                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">ANA NUM TP1</span>
+                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">ATF TP</span>
                         <div class="margin-10px-top font-size14">107 108</div>
                         <div class="font-size13 text-light-gray"><span class="badge badge-pill badge-dark">20 places disponibles</span></div>
                       </td>
@@ -134,7 +136,7 @@ session_start();
                         <div class="font-size13 text-light-gray"> </div>
                       </td>
                       <td>
-                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">RESEAUX TP1</span>
+                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom  font-size16 xs-font-size13">Analyse Numérique</span>
                         <div class="margin-10px-top font-size14">201 202</div>
                         <div class="font-size13 text-light-gray"><span class="badge badge-pill badge-dark">50 places disponibles</span></div>
                       </td>
@@ -276,3 +278,9 @@ include "footer.php";
 </body>
 
 </html>
+<?php
+}
+else{
+   header("Location: index.php");
+}
+?>

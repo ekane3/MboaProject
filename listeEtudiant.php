@@ -1,96 +1,95 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Consulter la liste des étudiants</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css">
-  <!-- DataTables.net  -->
-  <link rel="stylesheet" type="text/css" href="css/addons/datatables.min.css">
-  <link rel="stylesheet" href="css/addons/datatables-select.min.css">
+include("connexion.php");
+if ( isset($_SESSION['statut'])&& isset($_SESSION['token']) && isset($_SESSION['token_time']) &&  $_SESSION['statut']=='admin' ) {
+  ?>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Consulter la liste des étudiants</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- DataTables.net  -->
+    <link rel="stylesheet" type="text/css" href="css/addons/datatables.min.css">
+    <link rel="stylesheet" href="css/addons/datatables-select.min.css">
 
-  <!-- Your custom styles (optional) -->
-  <style>
+    <!-- Your custom styles (optional) -->
+    <style>
 
-  </style>
-</head>
+    </style>
+  </head>
 
-<body class="fixed-sn white-skin">
+  <body class="fixed-sn white-skin">
 
- <!--Main Navigation-->
- <?php
- include("connexion.php");
- include("header.php");
- ?> 
- <!--Main Navigation-->
+   <!--Main Navigation-->
+   <?php
+   include("header.php");
+   ?> 
+   <!--Main Navigation-->
 
- <!-- Main layout  -->
- <main>
-  <div class="container-fluid mb-5">
+   <!-- Main layout  -->
+   <main>
+    <div class="container-fluid mb-5">
 
-    <!-- Section: Basic examples -->
-    <section>
-      <!-- Gird column -->
-      <div class="col-md-12">
+      <!-- Section: Basic examples -->
+      <section>
+        <!-- Gird column -->
+        <div class="col-md-12">
 
-        <h5 class="my-4 dark-grey-text font-weight-bold">Table des étudiants inscrits</h5>
-        <div class="card">
-          <div class="card-body">
-            <table id="dtMaterialDesignExample" class="table table-striped" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nom</th>
-                  <th>Login</th>
-                  <th>classe</th>
-                  <th>password</th>
-                  <th>Date de naissance</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              
-              <tbody>
-                <?php
-                $requete = $bdd->query(' SELECT * FROM utilisateur WHERE statut ="etudiant" ORDER BY date_inscription DESC LIMIT 10 ');
-                $i=1;
+          <h5 class="my-4 dark-grey-text font-weight-bold">Table des étudiants inscrits</h5>
+          <div class="card">
+            <div class="card-body">
+              <table id="dtMaterialDesignExample" class="table table-striped" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Login</th>
+                    <th>classe</th>
+                    <th>Date de naissance</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
                 
-                while($data = $requete->fetch()){
-                  echo'<tr>'
-                  .'<td>'.$i.'</td>'
-                  .'<td>'.$data['nom'].'</td>'
-                  .'<td>'.$data['login'].'</td>'
-                  .'<td>'.$data['classe'].'</td>'
-                  .'<td>'.$data['password'].'</td>'
-                  .'<td>'.$data['date_naissance'].'</td>'
-                  .'<td><button class="btn btn-rounded btn-blue-grey">Update</button></td>'
-                  .'<td><button class="btn btn-rounded btn-outline-danger waves-effect">Delete</button></td>'
-                  .'</tr>';
-                  $i++;
-                }    
-                ?>
-              </tr>
-            </tbody>
-          </table>
+                <tbody>
+                  <?php
+                  $requete = $bdd->query(' SELECT * FROM utilisateur WHERE statut ="etudiant" ORDER BY date_inscription DESC  ');
+                  $i=1;
+                  
+                  while($data = $requete->fetch()){
+                    echo'<tr>'
+                    .'<td>'.$i.'</td>'
+                    .'<td>'.$data['nom'].'</td>'
+                    .'<td>'.$data['login'].'</td>'
+                    .'<td>'.$data['classe'].'</td>'
+                    .'<td>'.$data['date_naissance'].'</td>'
+                    .'<td><button class="btn btn-rounded btn-blue-grey">Update</button></td>'
+                    .'<td><button class="btn btn-rounded btn-outline-danger waves-effect">Delete</button></td>'
+                    .'</tr>';
+                    $i++;
+                  }    
+                  ?>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </div>
+      <!-- Gird column -->
 
-    </div>
-    <!-- Gird column -->
+    </section>
+    <!-- Section: Basic examples -->
 
-  </section>
-  <!-- Section: Basic examples -->
-
-</div>
+  </div>
 </main>
 <!-- Main layout -->
 <br><br><br><br><br><br><br>
@@ -143,3 +142,9 @@ include "footer.php";
 </body>
 
 </html>
+<?php
+}
+else{
+ header("Location: edt.php");
+}
+?>

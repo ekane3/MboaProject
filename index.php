@@ -1,5 +1,16 @@
 <?php
+//On demarre les sessions
 session_start();
+
+   //On génère un jeton totalement unique 
+$token = uniqid(rand(), true);
+//Et on le stocke dans la variable session token
+$_SESSION['token'] = $token;
+//On enregistre aussi le timestamp correspondant au moment de la création du token
+$_SESSION['token_time'] = time();
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,6 +123,7 @@ session_start();
                         <div class="md-form">
                           <i class="fas fa-lock prefix"></i>  
                           <input type="password" id='secuid10' class="form-control" readonly='true'  name="pass">
+                          <input type="hidden" name="token" id="token" value="<?php echo $token;?>">
                         </div>
                         <div class='sgen'>
                           <table class="table table-bordered" id='secure'>

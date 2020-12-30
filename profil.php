@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ( isset($_SESSION['statut']) && $_SESSION['statut']=='etudiant' || $_SESSION['statut']=='admin' ) {
+  if ( isset($_SESSION['statut'])&& isset($_SESSION['token_time']) ) {
   include('connexion.php');
   $st = $bdd->query("SELECT * FROM utilisateur WHERE login='".$_SESSION['login']."'");
   $st->execute();
@@ -108,7 +108,7 @@
 
                     <div class="md-form form-sm mb-0">
                       <input type="text" id="form5" class="form-control form-control-sm" name="pass">
-                      <label for="form5" class=""><?php echo $donnees['password_hash']; ?></label>
+                      <label for="form5" class=""><?php echo $donnees['password']; ?></label>
                     </div>
 
                   </div>
@@ -250,10 +250,11 @@
 
   </script>
 </body>
+
+</html>
 <?php
 }
 else{
-   header("Location: loginPost.php");
+   header("Location: index.php");
 }
 ?>
-</html>

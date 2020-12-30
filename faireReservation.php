@@ -1,5 +1,7 @@
 <?php
-session_start();
+  session_start();
+   include("connexion.php");
+    if ( isset($_SESSION['statut']) && isset($_SESSION['token']) && isset($_SESSION['token_time'])  ) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,6 @@ session_start();
 
  <!--Main Navigation-->
  <?php
- include "connexion.php";
  include "header.php";
  ?>
  <!--Main Navigation-->
@@ -54,12 +55,30 @@ session_start();
               </thead>
               <tbody>
                 <?php
-                $requete = $bdd->query('SELECT c.id as idcreneau,s.id as idsalle,c.heure_debut as heured,c.heure_fin as heuref, date_cours, nom_cours,s.nom_salle as salle,s.nbre_place_total as placetotal
+                //requete pour connaitre les creneaux reservés par un user
+                $requete_creneau= $bdd->prepare('SELECT id_creneau from reserver where login = :login');
+                $requete_creneau->bindValue(':login', $_SESSION['login'], PDO::PARAM_STR);
+                $requete_creneau->execute();
+                $recup = $requete_creneau->fetchAll(PDO::FETCH_ASSOC);
+
+                  if (isset($recup[0]['id_creneau'])) {
+                    $requete = $bdd->query('SELECT c.id as idcreneau,s.id as idsalle,c.heure_debut as heured,c.heure_fin as heuref, date_cours, nom_cours,s.nom_salle as salle,s.nbre_place_total as placetotal
+                  FROM cours as co 
+                  INNER JOIN creneau as c on c.id = co.id_creneau 
+                  INNER JOIN salle as s on s.id = co.id_salle 
+                  where s.nbre_place_total > 0 AND c.id!="'.$recup[0]['id_creneau'].'"
+                  ORDER BY date_cours ASC ');
+
+                  } else {
+                    $requete = $bdd->query('SELECT c.id as idcreneau,s.id as idsalle,c.heure_debut as heured,c.heure_fin as heuref, date_cours, nom_cours,s.nom_salle as salle,s.nbre_place_total as placetotal
                   FROM cours as co 
                   INNER JOIN creneau as c on c.id = co.id_creneau 
                   INNER JOIN salle as s on s.id = co.id_salle 
                   where s.nbre_place_total > 0 
                   ORDER BY date_cours ASC ');
+                  }
+                  
+                
                 $i=1;
 
                 while($data = $requete->fetch(PDO::FETCH_ASSOC)){
@@ -165,7 +184,7 @@ include "footer.php";
           $("#"+data.id).remove();
         } catch (e) {
           console.error(e)
-          console.error('JSON recieved :', data)
+          console.error('JSON received :', data)
           console.error(data.id)
         }
       }
@@ -185,3 +204,9 @@ include "footer.php";
 </body>
 
 </html>
+<?php
+}
+else{
+   header("Location: index.php");
+}
+?>

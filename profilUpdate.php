@@ -1,25 +1,4 @@
 
-  <?php 
-  session_start();
-  /*SELECT r.login,s.nom_salle as ns,c.heure_debut as hd,c.heure_fin,r.jour_reservation FROM reserver as r
-INNER JOIN creneau AS c ON c.id = r.id_creneau
-INNER JOIN salle AS s ON s.id = r.id_salle
-INNER JOIN utilisateur AS u ON u.login = r.login
-WHERE r.login = 'ekane@gmail.com'
-
-
-SELECT count(*) as nbrereservation FROM reserver WHERE login="ekane@gmail.com"
- 	include "connexion.php";
-
-        if (isset($_SESSION['login'])){
-           $requete = $bdd->query('SELECT count(*) as nbrereserv FROM reserver WHERE login="'.$_SESSION['login'].'"');
-            $data = $requete->fetch();
-          echo "".$data['nbrereserv'].""; 
-        }else{
-          echo "0"; 
-        } */
-        ?>
-
       <?php
 
 $resultA['2014-11-02']=17;
@@ -27,6 +6,7 @@ $resultA['2014-11-12']=5;
 $resultA['2014-11-13']=3;
 $resultA['2014-11-14']=15;
 $resultA['2014-11-15']=16;
+
 
 
 function draw_calendar($month,$year,$resultA)

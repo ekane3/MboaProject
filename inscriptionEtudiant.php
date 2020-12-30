@@ -1,5 +1,7 @@
 <?php
-session_start();
+  session_start();
+   include("connexion.php");
+    if ( isset($_SESSION['statut'])&& isset($_SESSION['token']) && isset($_SESSION['token_time']) &&  $_SESSION['statut']=='admin' ) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,8 +147,8 @@ session_start();
                   <th>Nom</th>
                   <th>Login</th>
                   <th>classe</th>
-                  <th>password</th>
                   <th>Date de naissance</th>
+                  <th>Date inscription</th>
                 </tr>
               </thead>
               <tbody>
@@ -160,8 +162,8 @@ session_start();
                   .'<td>'.$data['nom'].'</td>'
                   .'<td>'.$data['login'].'</td>'
                   .'<td>'.$data['classe'].'</td>'
-                  .'<td>'.$data['password'].'</td>'
                   .'<td>'.$data['date_naissance'].'</td>'
+                  .'<td>'.$data['date_inscription'].'</td>'
                   .'</tr>';
                   $i++;
                 }    
@@ -233,3 +235,9 @@ include "footer.php";
 </body>
 
 </html>
+<?php
+}
+else{
+   header("Location: edt.php");
+}
+?>
